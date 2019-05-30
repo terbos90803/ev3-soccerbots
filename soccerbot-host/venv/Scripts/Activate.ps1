@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\terbo\PycharmProjects\soccerbothost\venv"
+$env:VIRTUAL_ENV="C:\Users\terbo\OneDrive\Documents\LEGO\ev3-soccerbots\soccerbothost\venv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

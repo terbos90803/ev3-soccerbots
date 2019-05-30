@@ -2,7 +2,7 @@ import pygame
 from RemoteRobot import RemoteRobot
 from Command import Command
 
-# Connect to the EV3
+# Connect to the EV3s
 blueRobot = RemoteRobot('00:17:E9:B2:8A:AF')  # BLUE
 yellowRobot = RemoteRobot('00:17:EC:F6:16:26')  # YELLOW
 

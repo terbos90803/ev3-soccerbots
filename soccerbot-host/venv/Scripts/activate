@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\terbo\PycharmProjects\soccerbothost\venv"
+VIRTUAL_ENV="C:\Users\terbo\OneDrive\Documents\LEGO\ev3-soccerbots\soccerbothost\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
