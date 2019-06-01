@@ -11,6 +11,19 @@ yellowRobot.connect()
 # Define some colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+
+
+class Robot:
+    def __init__(self, robot, color, name):
+        self.robot = robot
+        self.color = color
+        self.name = name
+
+robots = [Robot(blueRobot, BLUE, 'BLUE'), Robot(yellowRobot, YELLOW, 'YELLOW')]
 
 
 # This is a simple class that will help us print to the screen
@@ -19,17 +32,25 @@ WHITE = (255, 255, 255)
 class TextPrint:
     def __init__(self):
         self.reset()
-        self.font = pygame.font.Font(None, 20)
+        self.font = pygame.font.Font(None, 40)
 
     def print(self, screen, textString):
         textBitmap = self.font.render(textString, True, BLACK)
         screen.blit(textBitmap, [self.x, self.y])
         self.y += self.line_height
 
+    def button(self, screen, color, textString):
+        textBitmap = self.font.render(textString, True, BLACK)
+        rect = (self.x, self.y, 200, self.line_height)
+        pygame.draw.rect(screen, color, rect)
+        screen.blit(textBitmap, [self.x + 10, self.y])
+        self.y += self.line_height
+        return rect
+
     def reset(self):
         self.x = 10
         self.y = 10
-        self.line_height = 15
+        self.line_height = 30
 
     def indent(self):
         self.x += 10
@@ -41,10 +62,10 @@ class TextPrint:
 pygame.init()
 
 # Set the width and height of the screen [width,height]
-size = [500, 700]
+size = [800, 300]
 screen = pygame.display.set_mode(size)
 
-pygame.display.set_caption("My Game")
+pygame.display.set_caption("Soccerbot Host")
 
 # Loop until the user clicks the close button.
 done = False
@@ -64,6 +85,9 @@ while done == False:
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
+
+    mousePos = pygame.mouse.get_pos()
+    mouseClick = pygame.mouse.get_pressed()
 
     # DRAWING STEP
     # First, clear the screen to white. Don't put other drawing commands
@@ -89,46 +113,17 @@ while done == False:
         name = joystick.get_name()
         textPrint.print(screen, "Joystick name: {}".format(name))
 
-        # Usually axis run in pairs, up/down for one, and left/right for
-        # the other.
-        axes = joystick.get_numaxes()
-        textPrint.print(screen, "Number of axes: {}".format(axes))
-        textPrint.indent()
-
-        for i in range(axes):
-            axis = joystick.get_axis(i)
-            textPrint.print(screen, "Axis {} value: {:>6.3f}".format(i, axis))
-        textPrint.unindent()
-
-        buttons = joystick.get_numbuttons()
-        textPrint.print(screen, "Number of buttons: {}".format(buttons))
-        textPrint.indent()
-
-        for i in range(buttons):
-            button = joystick.get_button(i)
-            textPrint.print(screen, "Button {:>2} value: {}".format(i, button))
-        textPrint.unindent()
-
-        # Hat switch. All or nothing for direction, not like joysticks.
-        # Value comes back in an array.
-        hats = joystick.get_numhats()
-        textPrint.print(screen, "Number of hats: {}".format(hats))
-        textPrint.indent()
-
-        for i in range(hats):
-            hat = joystick.get_hat(i)
-            textPrint.print(screen, "Hat {} value: {}".format(i, str(hat)))
-        textPrint.unindent()
+        robot = robots[i]
+        connected = robot.robot.is_connected()
+        rect = textPrint.button(screen, GREEN if connected else RED, robot.name)
+        robot.robot.use_joystick(pygame.joystick.Joystick(i))
+        if not connected and rect[0] < mousePos[0] < rect[0] + rect[2] and rect[1] < mousePos[1] < rect[1] + rect[3] and mouseClick[0] == 1:
+            robot.robot.connect()
 
         textPrint.unindent()
+
 
     # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
-
-    if joystick_count > 0:
-        blueRobot.use_joystick(pygame.joystick.Joystick(0))
-
-    if joystick_count > 1:
-        yellowRobot.use_joystick(pygame.joystick.Joystick(1))
 
     # Go ahead and update the screen with what we've drawn.
     pygame.display.flip()

@@ -13,23 +13,28 @@ class RemoteRobot:
         try:
             self.s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
             self.s.connect((self.robot_mac_addr, self.port))
+            print('Connected to robot', self.robot_mac_addr)
         except OSError:
             self.s = None
-            print('Failed to open BT connection to ', self.robot_mac_addr)
+            print('Failed to open BT connection to', self.robot_mac_addr)
 
     def is_connected(self):
         return self.s is not None
 
     def close(self):
         if self.s is not None:
-            self.send_command(Command(0, 0, 0))
+            self.send_command(0, 0, 0)
             self.s.close()
             self.s = None
 
     def send_command(self, left_stick, right_stick, pressed):
         if self.s is not None:
             data = pickle.dumps(Command(left_stick, right_stick, pressed))
-            self.s.send(data)
+            try:
+                self.s.send(data)
+            except OSError:
+                self.s = None
+                print('Robot disconnected', self.robot_mac_addr)
 
     @staticmethod
     def deadzone(val):

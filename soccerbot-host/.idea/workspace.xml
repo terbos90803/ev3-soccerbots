@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9cd6a82-2ea1-4fa3-b9fe-798208e87f0d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RemoteRobot.py" beforeDir="false" afterPath="$PROJECT_DIR$/RemoteRobot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/SoccerbotHost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SoccerbotHost.py" afterDir="false" />
     </list>
@@ -13,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/SoccerbotHost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="265">
-              <caret line="109" column="28" lean-forward="true" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
+            <state relative-caret-position="350">
+              <caret line="122" column="28" lean-forward="true" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -25,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/RemoteRobot.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+            <state relative-caret-position="306">
+              <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -67,8 +68,8 @@
         <option value="$PROJECT_DIR$/SocketTest.py" />
         <option value="$PROJECT_DIR$/Command.py" />
         <option value="$PROJECT_DIR$/SingleBotTest.py" />
-        <option value="$PROJECT_DIR$/SoccerbotHost.py" />
         <option value="$PROJECT_DIR$/RemoteRobot.py" />
+        <option value="$PROJECT_DIR$/SoccerbotHost.py" />
       </list>
     </option>
   </component>
@@ -272,16 +273,6 @@
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rpyc/core/__init__.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rpyc/core/async.py" />
     <entry file="file://$PROJECT_DIR$/venv/Lib/site-packages/rpyc/core/protocol.py" />
-    <entry file="file://$PROJECT_DIR$/SingleBotTest.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Conntest.py" />
     <entry file="file://$PROJECT_DIR$/Command.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -294,22 +285,46 @@
     <entry file="file://$PROJECT_DIR$/SocketTest.py" />
     <entry file="file://$PROJECT_DIR$/Robot.py" />
     <entry file="file://$PROJECT_DIR$/venv/Scripts/activate.bat" />
-    <entry file="file://$PROJECT_DIR$/SoccerbotHost.py">
+    <entry file="file://$PROJECT_DIR$/SingleBotTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="265">
-          <caret line="109" column="28" lean-forward="true" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
+        <state relative-caret-position="34">
+          <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/2012279806/pygame/draw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="65" column="4" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharmCE2019.1/system/python_stubs/2012279806/pygame/font.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="563">
+          <caret line="195" selection-start-line="195" selection-end-line="195" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/RemoteRobot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+        <state relative-caret-position="306">
+          <caret line="18" column="50" selection-start-line="18" selection-start-column="50" selection-end-line="18" selection-end-column="50" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/SoccerbotHost.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="122" column="28" lean-forward="true" selection-start-line="122" selection-start-column="28" selection-end-line="122" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
