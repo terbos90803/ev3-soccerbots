@@ -2,44 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d9cd6a82-2ea1-4fa3-b9fe-798208e87f0d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/soccerbothost.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/soccerbothost.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/_camera.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/_pygame.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/_surface.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/bitmask.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/camera.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/fastevents.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/font.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/freetype.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/mask.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/mixer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/palette.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/pgarrinter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/pgbufferproxy.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/pgcompat.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/pgopengl.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/pygame.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/scrap.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Include/site/python3.7/pygame/surface.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/Activate.ps1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/activate" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/activate.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/deactivate.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-3.7-script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-3.7.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install-script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/easy_install.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip-script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3-script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.7-script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.7.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pip3.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/python.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/Scripts/pythonw.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/pyvenv.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RemoteRobot.py" beforeDir="false" afterPath="$PROJECT_DIR$/RemoteRobot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SoccerbotHost.py" beforeDir="false" afterPath="$PROJECT_DIR$/SoccerbotHost.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -49,11 +13,26 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/SoccerbotHost.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="10" selection-start-column="10" selection-end-column="10" />
+            <state relative-caret-position="265">
+              <caret line="109" column="28" lean-forward="true" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RemoteRobot.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="333">
+              <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+              <folding>
+                <element signature="e#0#16#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -87,9 +66,9 @@
         <option value="$PROJECT_DIR$/Robot.py" />
         <option value="$PROJECT_DIR$/SocketTest.py" />
         <option value="$PROJECT_DIR$/Command.py" />
-        <option value="$PROJECT_DIR$/RemoteRobot.py" />
         <option value="$PROJECT_DIR$/SingleBotTest.py" />
         <option value="$PROJECT_DIR$/SoccerbotHost.py" />
+        <option value="$PROJECT_DIR$/RemoteRobot.py" />
       </list>
     </option>
   </component>
@@ -104,6 +83,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,7 +95,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,13 +245,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14330874" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32932165" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3109426" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3109426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -313,23 +293,24 @@
     <entry file="file://$PROJECT_DIR$/Joystick.py" />
     <entry file="file://$PROJECT_DIR$/SocketTest.py" />
     <entry file="file://$PROJECT_DIR$/Robot.py" />
-    <entry file="file://$PROJECT_DIR$/venv/Scripts/activate.bat">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/RemoteRobot.py">
+    <entry file="file://$PROJECT_DIR$/venv/Scripts/activate.bat" />
+    <entry file="file://$PROJECT_DIR$/SoccerbotHost.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
+        <state relative-caret-position="265">
+          <caret line="109" column="28" lean-forward="true" selection-start-line="109" selection-start-column="28" selection-end-line="109" selection-end-column="28" />
           <folding>
-            <element signature="e#0#16#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SoccerbotHost.py">
+    <entry file="file://$PROJECT_DIR$/RemoteRobot.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        <state relative-caret-position="333">
+          <caret line="43" column="47" lean-forward="true" selection-start-line="43" selection-start-column="47" selection-end-line="43" selection-end-column="47" />
+          <folding>
+            <element signature="e#0#16#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

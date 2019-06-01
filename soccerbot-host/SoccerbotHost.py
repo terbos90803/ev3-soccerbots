@@ -1,6 +1,5 @@
 import pygame
 from RemoteRobot import RemoteRobot
-from Command import Command
 
 # Connect to the EV3s
 blueRobot = RemoteRobot('00:17:E9:B2:8A:AF')  # BLUE
@@ -126,20 +125,10 @@ while done == False:
     # ALL CODE TO DRAW SHOULD GO ABOVE THIS COMMENT
 
     if joystick_count > 0:
-        joystick = pygame.joystick.Joystick(0)
-        leftStick = joystick.get_axis(1) * -100
-        rightStick = joystick.get_axis(3) * -100
-        button = joystick.get_button(1) + joystick.get_button(0)
-        cmd = Command(leftStick, rightStick, button)
-        blueRobot.send_command(cmd)
+        blueRobot.use_joystick(pygame.joystick.Joystick(0))
 
     if joystick_count > 1:
-        joystick = pygame.joystick.Joystick(1)
-        leftStick = joystick.get_axis(1) * -100
-        rightStick = joystick.get_axis(3) * -100
-        button = joystick.get_button(1) + joystick.get_button(0)
-        cmd = Command(leftStick, rightStick, button)
-        yellowRobot.send_command(cmd)
+        yellowRobot.use_joystick(pygame.joystick.Joystick(1))
 
     # Go ahead and update the screen with what we've drawn.
     pygame.display.flip()
@@ -149,8 +138,8 @@ while done == False:
 
 # Close the window and quit.
 
-blueRobot.send_command(Command(0, 0, 0))
-yellowRobot.send_command(Command(0, 0, 0))
+blueRobot.close()
+yellowRobot.close()
 
 # If you forget this line, the program will 'hang'
 # on exit if running from IDLE.
