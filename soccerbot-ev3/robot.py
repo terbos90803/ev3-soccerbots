@@ -8,16 +8,27 @@ import subprocess
 import bluetooth
 from Command import Command
 from ev3dev2.motor import MediumMotor, LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C
-from ev3dev2.led import Leds
+from ev3dev2.led import Led, Leds
 from Screen import init_console, reset_console, debug_print
 
 
 init_console()
 
 # get handles for the three motors
-kickMotor = MediumMotor(OUTPUT_A)
-rightMotor = LargeMotor(OUTPUT_B)
-leftMotor = LargeMotor(OUTPUT_C)
+try:
+    kickMotor = MediumMotor(OUTPUT_A)
+    rightMotor = LargeMotor(OUTPUT_B)
+    leftMotor = LargeMotor(OUTPUT_C)
+except: # DeviceNotConnected:
+    print("Motor not connected")
+    print("Check and restart")
+    while True:
+        pass
+
+leds = Leds()
+#debug_print(Led().triggers)
+leds.set('LEFT', trigger='default-on')
+leds.set('RIGHT', trigger='default-on')
 
 # hostMACAddress = '00:17:E9:B2:8A:AF' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
 # Fetch BT MAC address automatically
@@ -43,8 +54,14 @@ while True:
     try:
         reset_console()
         print (hostMACAddress)
+        leds.set_color('LEFT', 'AMBER')
+        leds.set_color('RIGHT', 'AMBER')
+
         client, clientInfo = s.accept()
         print ('Connected')
+        leds.set_color('LEFT', 'GREEN')
+        leds.set_color('RIGHT', 'GREEN')
+
         while True:
             data = client.recv(size)
             if data:
