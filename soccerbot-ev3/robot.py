@@ -7,6 +7,7 @@ import sys
 import subprocess
 import bluetooth
 from Command import Command
+from ev3dev2 import DeviceNotFound
 from ev3dev2.motor import MediumMotor, LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C
 from ev3dev2.led import Led, Leds
 from ev3dev2.display import Display
@@ -20,9 +21,10 @@ try:
     kickMotor = MediumMotor(OUTPUT_A)
     rightMotor = LargeMotor(OUTPUT_B)
     leftMotor = LargeMotor(OUTPUT_C)
-except: # DeviceNotConnected:
+except DeviceNotFound as error:
     print("Motor not connected")
     print("Check and restart")
+    print(error)
     while True:
         pass
 
