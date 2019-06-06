@@ -10,12 +10,13 @@ blueRobot.connect()
 yellowRobot.connect()
 
 # Define some colors
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-YELLOW = (255, 255, 0)
+BLACK = pygame.Color(0, 0, 0)
+GRAY = pygame.Color(127, 127, 127)
+WHITE = pygame.Color(255, 255, 255)
+RED = pygame.Color(255, 0, 0)
+GREEN = pygame.Color(0, 255, 0)
+BLUE = pygame.Color(0, 0, 255)
+YELLOW = pygame.Color(255, 255, 0)
 
 
 class RobotDesc:
@@ -56,10 +57,10 @@ class TextPrint:
         self.y += self.line_height
 
     def button(self, color, textString):
-        textBitmap = self.font.render(textString, True, BLACK)
-        rect = (self.x, self.y, textBitmap.get_width() + 20, self.line_height)
+        text_bitmap = self.font.render(textString, True, BLACK)
+        rect = (self.x, self.y, text_bitmap.get_width() + 20, self.line_height)
         pygame.draw.rect(screen, color, rect)
-        screen.blit(textBitmap, [self.x + 10, self.y])
+        screen.blit(text_bitmap, [self.x + 10, self.y])
         self.y += self.line_height
         return rect
 
@@ -67,13 +68,19 @@ class TextPrint:
         x = self.x
         for b in sel.buttons:
             r = b.rd
-            textBitmap = self.font.render(r.name, True, BLACK)
-            rect = pygame.Rect(x, self.y, textBitmap.get_width() + 20, self.line_height)
+            text_bitmap = self.font.render(r.name, True, BLACK)
+            rect = pygame.Rect(x, self.y, text_bitmap.get_width() + 20, self.line_height)
+            in_rect = rect.collidepoint(mousePos)
             color = GREEN if b.active and r.robot.is_connected() else RED if b.active else WHITE
+            if in_rect:
+                hsva = color.hsva
+                color = pygame.Color(0, 0, 0) # Make a new color instead of modifying one of the constants
+                color.hsva = (hsva[0], hsva[1], hsva[2] / 2, hsva[3])
             pygame.draw.rect(screen, color, rect)
-            screen.blit(textBitmap, [x + 10, self.y])
+            screen.blit(text_bitmap, [x + 10, self.y])
             b.rect = rect
-            if newClick and rect.collidepoint(mousePos):
+
+            if newClick and in_rect:
                 b.active = not b.active
                 if b.active:
                     r.robot.connect()
