@@ -25,7 +25,8 @@ class RemoteRobot:
     def close(self):
         if self.s is not None:
             self.send_command(Command(0, 0, 0))
-            self.s.close()
+            if self.s is not None:
+                self.s.close()
             self.s = None
 
     def send_command(self, command):
