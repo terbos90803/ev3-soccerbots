@@ -85,10 +85,10 @@ while True:
                     if do_kick != kicking:
                         kicking = do_kick
                         if do_kick:
-                            kickMotor.run_to_abs_pos(position_sp=-90, speed_sp=kick_power*max_kick/screenh, stop_action="hold")
+                            kickMotor.run_to_abs_pos(position_sp=-100, speed_sp=kick_power*max_kick//screenh, stop_action="hold")
                             kick_power = kick_power - (25 if kick_power > 25 else kick_power)
                         else:
-                            kickMotor.run_to_abs_pos(position_sp=0, speed_sp=200, stop_action="hold")
+                            kickMotor.run_to_abs_pos(position_sp=-10, speed_sp=200, stop_action="coast")
 
                     kick_power = kick_power + (1 if kick_power < screenh else 0)
                     display.rectangle(x1=0, y1=0, x2=screenw, y2=kick_power)
