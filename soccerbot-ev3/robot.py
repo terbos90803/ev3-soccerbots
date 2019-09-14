@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-SSCI SoccerBot robot server
+SSCI SoccerBot robot
 """
 
 import sys
@@ -18,7 +18,6 @@ init_console()
 
 # get handles for the three motors
 try:
-    kickMotor = MediumMotor(OUTPUT_A)
     rightMotor = LargeMotor(OUTPUT_B)
     leftMotor = LargeMotor(OUTPUT_C)
 except DeviceNotFound as error:
@@ -46,13 +45,10 @@ hostMACAddress = sp_result.stdout.split("{}:".format(device_id))[1].split("BD Ad
 debug_print (hostMACAddress)
 print (hostMACAddress)
 
-# reset the kick motor to a known good position
-kickMotor.on_for_seconds(speed=-10, seconds=0.5)
-kickMotor.on_for_seconds(speed=10, seconds=2, brake=False)
-kickMotor.reset()
-kicking = False
 kick_power = 0
 max_kick = 1000
+max_power = 100
+drive_pct = 0.60
 
 port = 3  # port number is arbitrary, but must match between server and client
 backlog = 1
@@ -79,18 +75,20 @@ while True:
                 cmd = Command.unpickled(data)
 
                 if cmd:
-                    leftMotor.on(speed=cmd.left_drive)
-                    rightMotor.on(speed=cmd.right_drive)
+                    left_speed=cmd.left_drive * drive_pct
+                    right_speed=cmd.right_drive * drive_pct
                     do_kick = cmd.do_kick > 0
-                    if do_kick != kicking:
-                        kicking = do_kick
-                        if do_kick:
-                            kickMotor.run_to_abs_pos(position_sp=-100, speed_sp=kick_power*max_kick//screenh, stop_action="hold")
-                            kick_power = kick_power - (25 if kick_power > 25 else kick_power)
-                        else:
-                            kickMotor.run_to_abs_pos(position_sp=-10, speed_sp=200, stop_action="coast")
+                    if do_kick:
+                        kick_power = kick_power - (5 if kick_power > 0 else 0)
+                        if kick_power > 0:
+                            left_speed=max_power
+                            right_speed=max_power
+                    else:
+                        kick_power = kick_power + (1 if kick_power < screenh else 0)
 
-                    kick_power = kick_power + (1 if kick_power < screenh else 0)
+                    leftMotor.on(speed=left_speed)
+                    rightMotor.on(speed=right_speed)
+
                     display.rectangle(x1=0, y1=0, x2=screenw, y2=kick_power)
                     display.update()
 
