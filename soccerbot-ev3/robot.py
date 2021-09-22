@@ -3,9 +3,9 @@
 SSCI SoccerBot robot server
 """
 
-import sys
-import subprocess
-import bluetooth
+import remote
+import time
+
 from Command import Command
 from ev3dev2 import DeviceNotFound
 from ev3dev2.motor import MediumMotor, LargeMotor, OUTPUT_A, OUTPUT_B, OUTPUT_C
@@ -17,16 +17,20 @@ from Screen import init_console, reset_console, debug_print
 init_console()
 
 # get handles for the three motors
-try:
-    kickMotor = MediumMotor(OUTPUT_A)
-    rightMotor = LargeMotor(OUTPUT_B)
-    leftMotor = LargeMotor(OUTPUT_C)
-except DeviceNotFound as error:
-    print("Motor not connected")
-    print("Check and restart")
-    print(error)
-    while True:
-        pass
+kickMotor = None
+rightMotor = None
+leftMotor = None
+while True:
+    try:
+        grabMotor = grabMotor if grabMotor else MediumMotor(OUTPUT_A)
+        rightMotor = rightMotor if rightMotor else LargeMotor(OUTPUT_B)
+        leftMotor = leftMotor if leftMotor else LargeMotor(OUTPUT_C)
+        break
+    except DeviceNotFound as error:
+        print("Motor not connected")
+        print("Check and restart")
+        print(error)
+        time.sleep(1)
 
 leds = Leds()
 #debug_print(Led().triggers)
@@ -37,14 +41,9 @@ display = Display()
 screenw = display.xres
 screenh = display.yres
 
-# hostMACAddress = '00:17:E9:B2:8A:AF' # The MAC address of a Bluetooth adapter on the server. The server might have multiple Bluetooth adapters.
-# Fetch BT MAC address automatically
-cmd = "hciconfig"
-device_id = "hci0"
-sp_result = subprocess.run(cmd, stdout=subprocess.PIPE, universal_newlines=True)
-hostMACAddress = sp_result.stdout.split("{}:".format(device_id))[1].split("BD Address: ")[1].split(" ")[0].strip()
-debug_print (hostMACAddress)
-print (hostMACAddress)
+# Create connection to server
+s, host_address = remote.get_listener_socket()
+s.settimeout(5)
 
 # reset the kick motor to a known good position
 kickMotor.on_for_seconds(speed=-10, seconds=0.5)
@@ -54,29 +53,40 @@ kicking = False
 kick_power = 0
 max_kick = 1000
 
-port = 3  # port number is arbitrary, but must match between server and client
-backlog = 1
-size = 1024
-s = bluetooth.BluetoothSocket(bluetooth.RFCOMM)
-s.bind((hostMACAddress, port))
-s.listen(backlog)
+# Main loop handles connections to the host
 while True:
     try:
         reset_console()
-        print (hostMACAddress)
+        print (host_address)
         leds.set_color('LEFT', 'AMBER')
         leds.set_color('RIGHT', 'AMBER')
+        debug_print('Waiting for connection')
+        remote.advertise()
 
-        client, clientInfo = s.accept()
+        try:
+            client, clientInfo = s.accept()
+        except:
+            continue
+
+        client.settimeout(10)
         print ('Connected')
+        debug_print('Connected to:', clientInfo)
         leds.set_color('LEFT', 'GREEN')
         leds.set_color('RIGHT', 'GREEN')
 
+        # Driving loop
         while True:
-            data = client.recv(size)
+            data = client.recv(remote.size)
+            #debug_print('recv:', data)
+            if data == b'':
+                client.close()
+                break
+
             if data:
                 #print(data, file=sys.stderr)
                 cmd = Command.unpickled(data)
+                if cmd == 'ping':
+                    continue
 
                 if cmd:
                     leftMotor.on(speed=cmd.left_drive)

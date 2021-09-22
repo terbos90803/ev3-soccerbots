@@ -6,9 +6,6 @@ from Command import Command
 blueRobot = RemoteRobot('00:17:E9:B2:8A:AF')  # BLUE
 yellowRobot = RemoteRobot('00:17:EC:F6:16:26')  # YELLOW
 
-blueRobot.connect()
-yellowRobot.connect()
-
 # Define some colors
 BLACK = pygame.Color(0, 0, 0)
 GRAY = pygame.Color(127, 127, 127)
@@ -147,6 +144,9 @@ last_mouse_press = False
 
 # -------- Main Program Loop -----------
 while not done:
+    blueRobot.connect()
+    yellowRobot.connect()
+
     # EVENT PROCESSING STEP
     for event in pygame.event.get():  # User did something
         if event.type == pygame.QUIT:  # If user clicked close
