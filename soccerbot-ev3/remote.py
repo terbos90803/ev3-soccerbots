@@ -19,7 +19,8 @@ host_address = socket.gethostbyname(_hostname)
 debug_print('name:', _hostname)
 debug_print('IP:', host_address)
 # if the top octet of the IP address is 127, there is no active IP connection
-_use_tcp = host_address.split('.')[0].strip() != '127'
+_top_octet = host_address.split('.')[0].strip()
+_use_tcp = _top_octet != '127' and _top_octet != '169'
 
 if _use_tcp:
     _ad_server = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)

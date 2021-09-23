@@ -17,12 +17,12 @@ from Screen import init_console, reset_console, debug_print
 init_console()
 
 # get handles for the three motors
-kickMotor = None
+#kickMotor = ''
 rightMotor = None
 leftMotor = None
 while True:
     try:
-        kickMotor = kickMotor if kickMotor else MediumMotor(OUTPUT_A)
+        # kickMotor = kickMotor if kickMotor else MediumMotor(OUTPUT_A)
         rightMotor = rightMotor if rightMotor else LargeMotor(OUTPUT_B)
         leftMotor = leftMotor if leftMotor else LargeMotor(OUTPUT_C)
         break
