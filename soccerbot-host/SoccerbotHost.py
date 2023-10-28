@@ -105,7 +105,7 @@ def deadzone(val):
 
 def use_joystick(joystick):
     left_stick = deadzone(joystick.get_axis(1) * -100)
-    right_stick = deadzone(joystick.get_axis(3) * -100)
+    right_stick = deadzone(joystick.get_axis(4) * -100)
 
     hat = joystick.get_hat(0)
     if hat[0] != 0 or hat[1] != 0:
