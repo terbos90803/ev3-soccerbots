@@ -7,3 +7,5 @@
     3. Use Bluetooth menu on EV3 to pair with Pi
 * Enable Inputs
     1. pip install inputs
+* Install raspi-blinka
+    * follow instructions at Adafruit
