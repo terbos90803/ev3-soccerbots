@@ -18,7 +18,7 @@ def clear():
 
 def startup(percent):
   clear()
-  for ix in range(_pixels.n * percent):
+  for ix in range((int)(_pixels.n * percent)):
     _pixels[ix] = white
 
 

@@ -1,6 +1,6 @@
 import pygame
 
-def init():
+def __init__():
   global match_start
   global match_end
   match_start = pygame.mixer.Sound("Match_Start.wav")
@@ -16,7 +16,7 @@ if __name__ == '__main__':
   import time
   
   pygame.init()
-  init()
+  __init__()
   play_match_start()
   time.sleep(5)
   play_match_end()
