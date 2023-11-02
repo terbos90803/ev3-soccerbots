@@ -6,8 +6,8 @@ import time
 from adafruit_ht16k33.segments import Seg7x4
 
 _i2c = busio.I2C(board.SCL, board.SDA)
-_disp_left = Seg7x4(_i2c, address=(0x70))
-_disp_right = Seg7x4(_i2c, address=(0x71))
+_disp_left = Seg7x4(_i2c, address=(0x71))
+_disp_right = Seg7x4(_i2c, address=(0x70))
 
 _disp_left.brightness = 0.5
 _disp_right.brightness = 0.5

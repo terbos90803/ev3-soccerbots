@@ -8,7 +8,7 @@ class Command:
         self.do_kick = do_kick
 
     def get_pickled(self):
-        return pickle.dumps(self)
+        return pickle.dumps(self, protocol=4)
 
     @staticmethod
     def unpickled(command_pickle):
