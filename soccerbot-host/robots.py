@@ -14,9 +14,15 @@ def _run_robot(robot):
     time.sleep(1)
   robot.close()
 
-_blue_thread = threading.Thread(target=_run_robot, args=(blueRobot,), daemon=True)
-_yellow_thread = threading.Thread(target=_run_robot, args = (yellowRobot,), daemon=True)
+_blue_thread = threading.Thread(target=_run_robot, args=(blueRobot,), daemon=False)
+_yellow_thread = threading.Thread(target=_run_robot, args = (yellowRobot,), daemon=False)
 
 def start():
   _blue_thread.start()
   _yellow_thread.start()
+
+def quit():
+  global done
+  done = True
+  _blue_thread.join()
+  _yellow_thread.join()

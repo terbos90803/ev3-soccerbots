@@ -42,6 +42,9 @@ def set_right_status(color, gamepad, robot):
   _pixels[6] = green if gamepad else red
   _pixels[5] = green if robot else red
   
+def set_shutdown():
+  clear()
+  _pixels[0] = _pixels[2] = _pixels[4] = _pixels[6] = yellow
   
 if __name__ == '__main__':
   while True:

@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Soccerbots
+Exec=xterm -hold -e 'cd /home/terry/ev3-soccerbots/soccerbot-host; /usr/bin/python3 SoccerbotHost-headless.py'
