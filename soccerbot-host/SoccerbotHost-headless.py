@@ -64,6 +64,7 @@ game_time = 0
 
 # Loop until the user clicks the close button.
 done = False
+shutdown = False
 
 while not done:
     # EVENT PROCESSING STEP
@@ -73,6 +74,7 @@ while not done:
 
     # Hold the red button for 5 seconds to shut down
     if buttons.red_button_hold_count() > 5 * rate:
+        shutdown = True
         done = True
 
     # Update HID inputs
@@ -99,7 +101,7 @@ while not done:
             state = State.Test
         elif buttons.green_button_pressed():
             game_time = 60
-            # sounds.play_match_start()
+            sounds.play_match_start()
             state = State.InGame
 
     elif state == State.Test:
@@ -117,7 +119,7 @@ while not done:
         if buttons.red_button_pressed():
             state = State.Start
         elif game_time <= 0:
-            # sounds.play_match_end()
+            sounds.play_match_end()
             state = State.Start
 
     else: # default - Shouldn't ever get here
@@ -140,3 +142,12 @@ pygame.quit()
 
 neo.clear()
 led.clear()
+
+if shutdown:
+    print('shutting down')
+    command = "/usr/bin/sudo /sbin/shutdown -h now"
+    import subprocess
+    process = subprocess.Popen(command.split(), stdout=subprocess.PIPE)
+    output = process.communicate()[0]
+    print(output)
+
