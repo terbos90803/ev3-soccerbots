@@ -72,7 +72,7 @@ while not done:
         if event.type == pygame.QUIT:  # If user clicked close
             done = True  # Flag that we are done so we exit this loop
 
-    # Hold the red button for 5 seconds to shut down
+    # Hold the red button for 5 seconds to really shut down
     if buttons.red_button_hold_count() > 5 * rate:
         shutdown = True
         done = True
@@ -117,6 +117,10 @@ while not done:
         game_time -= 1.0/rate
         neo.set_system_status(neo.green)
         if buttons.red_button_pressed():
+            sounds.play_match_abort()
+            state = State.Start
+        elif buttons.green_button_pressed():
+            sounds.play_match_win()
             state = State.Start
         elif game_time <= 0:
             sounds.play_match_end()
