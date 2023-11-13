@@ -91,12 +91,15 @@ while not done:
     # Game State
     if state == State.Start:
         led.clear()
+        # Clear any latent button presses
+        buttons.red_button_pressed()
+        buttons.green_button_pressed()
         state = State.Attract
 
     elif state == State.Attract:
         robot_enable = False
         led.show_marquee()
-        neo.set_system_status(neo.black)
+        neo.set_game_status(neo.black)
         if buttons.red_button_pressed():
             state = State.Test
         elif buttons.green_button_pressed():
@@ -107,15 +110,15 @@ while not done:
     elif state == State.Test:
         robot_enable = True
         led.show_text('Test')
-        neo.set_system_status(neo.yellow)
-        if buttons.red_button_pressed():
+        neo.set_game_status(neo.yellow)
+        if buttons.red_button_pressed() or buttons.green_button_pressed():
             state = State.Start
 
     elif state == State.InGame:
         robot_enable = True
         led.show_time(game_time)
         game_time -= 1.0/rate
-        neo.set_system_status(neo.green)
+        neo.set_game_status(neo.green)
         if buttons.red_button_pressed():
             sounds.play_match_abort()
             state = State.Start
@@ -130,6 +133,7 @@ while not done:
         state = State.Start
 
     # Command robots
+    # Must always send some command to keep the link alive
     robots.blueRobot.send_command(joysticks.commands[0] if robot_enable else disable_command)
     robots.yellowRobot.send_command(joysticks.commands[1] if robot_enable else disable_command)
     

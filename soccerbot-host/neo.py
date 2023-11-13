@@ -26,7 +26,7 @@ def set_ok(is_ok):
   _pixels[3] = _pixels[4] = green if is_ok else red
 
 
-def set_system_status(color):
+def set_game_status(color):
   if _pixels[3] is not color:
     _pixels[3] = _pixels[4] = color
 
