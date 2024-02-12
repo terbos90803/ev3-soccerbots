@@ -13,3 +13,9 @@ class Command:
     @staticmethod
     def unpickled(command_pickle):
         return pickle.loads(command_pickle)
+    
+    def __eq__(self, other):
+        """Overrides the default implementation"""
+        if isinstance(other, Command):
+            return self.left_drive == other.left_drive and self.right_drive == other.right_drive and self.do_kick == other.do_kick
+        return False

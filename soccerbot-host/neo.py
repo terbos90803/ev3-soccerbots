@@ -33,13 +33,13 @@ def set_game_status(color):
 
 def set_left_status(color, gamepad, robot):
   _pixels[0] = color
-  _pixels[1] = green if gamepad else red
+  _pixels[1] = gamepad
   _pixels[2] = green if robot else red
   
   
 def set_right_status(color, gamepad, robot):
   _pixels[7] = color
-  _pixels[6] = green if gamepad else red
+  _pixels[6] = gamepad
   _pixels[5] = green if robot else red
   
 def set_shutdown():
